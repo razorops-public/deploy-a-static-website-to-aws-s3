@@ -8,6 +8,7 @@ tasks:
       - bundle install
       - JEKYLL_ENV=production bundle exec jekyll build
 
+
     # commands to upload static pages folder to AWS S3
     - commands:
       - aws s3 rm s3://$AWS_S3_BUCKET --recursive
