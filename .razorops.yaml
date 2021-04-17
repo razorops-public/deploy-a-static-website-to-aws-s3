@@ -1,0 +1,16 @@
+tasks:
+  build:
+    steps:
+    - checkout
+    # commands to build jekyll website
+    - commands:
+      - gem install bundler
+      - rm Gemfile.lock
+      - bundle install
+      - JEKYLL_ENV=production bundle exec jekyll build
+
+    # commands to upload static pages folder to AWS S3
+    - commands:
+      - aws s3 rm s3://$AWS_S3_BUCKET --recursive
+      - aws s3 cp _site s3://$AWS_S3_BUCKET --recursive
+      if: branch == 'main'
