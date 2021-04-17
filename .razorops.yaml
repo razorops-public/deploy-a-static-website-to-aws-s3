@@ -5,7 +5,6 @@ tasks:
     # commands to build jekyll website
     - commands:
       - gem install bundler
-      - rm Gemfile.lock
       - bundle install
       - JEKYLL_ENV=production bundle exec jekyll build
 
